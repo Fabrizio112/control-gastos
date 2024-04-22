@@ -62,48 +62,51 @@
 ## Reglas de Negocio:
 
 ### Usuarios:
-- Crear un usuario
-- Leer todos los usuarios
-- Leer un usuario en particular
-- Actualizar un usuario
-- Validar un usuario
-- Actualizar datos de un usuario
-- Actualizar Password de un usuario
-- Eliminar un usuario
+- Crear un usuario ✅
+- Leer todos los usuarios ❌
+- Leer un usuario en particular ✅
+- Actualizar un usuario ✅
+- Validar un usuario ✅
+- Actualizar Password de un usuario ✅
+- Eliminar un usuario ✅
 
 ### Registro:
-- Crear un registros
-- Leer todos los registros
-- Leer un registro en particular
-- Actualizar un registro 
-- Eliminar un registro
+- Crear un registros ✅
+- Leer todos los registros ❌
+- Leer todos los registros asociados a un usuario ✅
+- Eliminar un registro ✅
 
 ### Ingreso:
-- Crear un ingreso
-- Leer todos los ingresos
-- Leer todos los ingresos de un usuario
-- Leer un ingreso en particular
-- Actualizar un ingreso 
-- Eliminar un ingreso
+- Crear un ingreso ✅
+- Leer todos los ingresos ❌
+- Leer todos los ingresos de un usuario✅
+- Leer un ingreso en particular ✅
+- Actualizar un ingreso ✅
+- Eliminar un ingreso ✅
 
 ### Egreso:
-- Crear todos los egresos
-- Leer todos los egresos
-- Leer todos los egresos de un usuario
-- Leer un egreso en particular
-- Actualizar un egreso 
-- Eliminar un egreso
+- Crear un egreso ✅
+- Leer todos los egresos ❌
+- Leer todos los egresos de un usuario ✅
+- Leer un egreso en particular ✅
+- Actualizar un egreso ✅
+- Eliminar un egreso ✅
 
+### Categoria:
+- Crear todas las categorias ✅
+- Leer todas las categorias ✅
+- Leer una categoria en particular ✅
+- Editar una categoria ✅
+- Eliminar una categoria ✅
+ 
 ### categoria_x_ingreso:
-- Crear todos las cxi
-- Leer todos los cxi
-- Leer un cxi en particular
-- Leer todos los cxi de un ingreso
-- Eliminar un cxi
+- Crear todos las cxi ✅
+- Leer todos los ingresos por una categoria en particular en un registro determinado ✅
+- Leer un cxi en particular ❌
+- Eliminar un cxi ✅
 
 ### categoria_x_egreso:
-- Crear todos los cxe
-- Leer todos los cxe
-- Leer un cxe en particular
-- Leer todos los cxe de un egreso
-- Eliminar un cxe
+- Crear todos los cxe ✅
+- Leer todos los Egresos por una categoria en particular en un registro determinado ✅
+- Leer un cxe en particular ❌
+- Eliminar un cxe ✅

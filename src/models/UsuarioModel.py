@@ -6,7 +6,7 @@ class UsuarioModel(db.Model):
     apellido=db.Column(db.String(50),nullable=False)
     username=db.Column(db.String(100),unique=True)
     avatar=db.Column(db.String(255),nullable=True)
-    password=db.Column(db.String(100),nullable=False)
+    password=db.Column(db.String(255),nullable=False)
     registro=db.relationship("RegistroModel",backref="usuario")
 
 class UsuarioSchema(ma.Schema):

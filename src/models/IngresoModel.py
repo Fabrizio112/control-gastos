@@ -6,7 +6,7 @@ class IngresoModel(db.Model):
     monto=db.Column(db.Integer,nullable=False)
     descripcion=db.Column(db.Text,nullable=True)
     fecha=db.Column(db.DateTime,default=datetime.now())
-    id_registro=db.Column(db.Integer,db.ForeignKey("registro.id"))
+    id_registro=db.Column(db.Integer,db.ForeignKey("registro_model.id"))
 
 class IngresoSchema(ma.Schema):
     class Meta:

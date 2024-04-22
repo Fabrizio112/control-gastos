@@ -1,5 +1,7 @@
 from ..utils import db,ma
-from . import categoria_x_egreso,categoria_x_ingreso
+from .categoria_x_egreso import categoria_x_egreso
+from .categoria_x_ingreso import categoria_x_ingreso
+
 class CategoriaModel(db.Model):
     id=db.Column(db.Integer,primary_key=True)
     nombre=db.Column(db.String(50),nullable=False)
