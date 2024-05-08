@@ -1,8 +1,6 @@
 from flask import Flask
 from .utils import db,ma
 from .routes.CategoriaRoutes import categoria_router
-from .routes.CxE_Route import CxE_router
-from .routes.CxI_Route import CxI_router
 from .routes.EgresoRoute import egreso_router
 from .routes.IngresoRoute import ingreso_router
 from .routes.LoginRoute import login_router
@@ -20,8 +18,6 @@ def control_gastos_app():
     ma.init_app(app)
 
     app.register_blueprint(categoria_router)
-    app.register_blueprint(CxE_router)
-    app.register_blueprint(CxI_router)
     app.register_blueprint(egreso_router)
     app.register_blueprint(ingreso_router)
     app.register_blueprint(login_router)

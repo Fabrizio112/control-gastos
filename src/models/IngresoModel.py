@@ -7,10 +7,11 @@ class IngresoModel(db.Model):
     descripcion=db.Column(db.Text,nullable=True)
     fecha=db.Column(db.DateTime,default=datetime.now())
     id_registro=db.Column(db.Integer,db.ForeignKey("registro_model.id"))
+    id_categoria=db.Column(db.Integer,db.ForeignKey("categoria_model.id"))
 
 class IngresoSchema(ma.Schema):
     class Meta:
-        fields=('nro','monto','descripcion','fecha','id_registro')
+        fields=('nro','monto','descripcion','fecha','id_registro','id_categoria')
 
 ingreso_schema=IngresoSchema()
 ingresos_schema=IngresoSchema(many=True)

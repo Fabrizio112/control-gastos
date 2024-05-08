@@ -28,6 +28,7 @@
 - descripcion TEXT (opcional)
 - fecha DATETIME
 - id_registro **FK**
+- id_categoria **FK**
 
 ### Egreso :
 - nro_egreso INT **PK**
@@ -35,28 +36,20 @@
 - descripcion TEXT (opcional)
 - fecha DATETIME
 - id_registro **FK**
+- id_categoria **FK**
 
 ### Categoria:
 - id_categoria INT **PK**
 - nombre VARCHAR(50)
 
-### categoria_x_ingreso:
-- id_cxi INT **PK**
-- nro_ingreso INT **FK**
-- id_categoria INT **FK**
-
-### categoria_x_egreso:
-- id_cxe INT **PK**
-- nro_egreso INT **FK**
-- id_categoria INT **FK**
 
 
 # Relacion del Sistema:
 1. Usuario **tiene** Registro (_1 a N_) 
 1. Registro **tiene** Ingreso (_1 a N_)
 1. Registro **tiene** Egreso (_1 a N_)
-1. Ingreso **tiene** Categoria (_N a N_)
-1. Egreso **tiene** Categoria (_N a N_)
+1. Ingreso **tiene** Categoria (_N a 1_)
+1. Egreso **tiene** Categoria (_N a 1_)
 
 
 ## Reglas de Negocio:
@@ -99,14 +92,36 @@
 - Editar una categoria ✅
 - Eliminar una categoria ✅
  
-### categoria_x_ingreso:
-- Crear todos las cxi ✅
-- Leer todos los ingresos por una categoria en particular en un registro determinado ✅
-- Leer un cxi en particular ❌
-- Eliminar un cxi ✅
 
-### categoria_x_egreso:
-- Crear todos los cxe ✅
-- Leer todos los Egresos por una categoria en particular en un registro determinado ✅
-- Leer un cxe en particular ❌
-- Eliminar un cxe ✅
+
+
+## Categorias De BASE:
+
+**Ingresos:** 
+
+1. Salario
+1. Ingresos por freelance/trabajo independiente
+1. Ingresos por alquiler de propiedad
+1. Ingresos por inversiones (dividendos, intereses, etc.)
+1. Reembolsos
+1. Bonificaciones
+1. Regalos
+1. Otros ingresos (venta de artículos, trabajos esporádicos, etc.)
+
+**Egresos:**
+
+1. Vivienda (alquiler/hipoteca)
+1. Alimentación
+1. Transporte (combustible, transporte público, mantenimiento de vehículos)
+1. Servicios públicos (electricidad, agua, gas, internet, teléfono)
+1. Salud (seguro médico, consultas médicas, medicamentos)
+1. Entretenimiento (cine, conciertos, actividades recreativas)
+1. Educación (matrículas, libros, cursos)
+1. Ahorros e inversiones
+1. Ropa y accesorios
+1. Cuidado personal (productos de belleza, peluquería, gimnasio)
+1. Viajes y vacaciones
+1. Donaciones y caridad
+1. Deudas (pagos de préstamos, tarjetas de crédito)
+1. Seguros (seguro de automóvil, seguro de hogar)
+1. Impuestos

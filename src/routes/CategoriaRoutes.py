@@ -1,8 +1,19 @@
 from flask import Blueprint,request,jsonify
 from ..models.CategoriaModel import CategoriaModel,categoria_schema,categorias_schema
 from ..utils import db
+from ..utils.categories_default import categorias
 
 categoria_router=Blueprint("categoria_router",__name__)
+
+
+@categoria_router.route("/insertar-categorias")
+def insertar_categorias():
+    for nombre_categoria in categorias:
+        categoria=CategoriaModel(id=0,nombre=nombre_categoria)
+        db.session.add(categoria)
+    db.session.commit()
+    return "Categorias insertadas correctamente"
+
 
 @categoria_router.route("/category",methods=["POST"])
 def add_categoria():

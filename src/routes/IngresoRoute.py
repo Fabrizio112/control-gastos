@@ -11,35 +11,36 @@ def add_ingreso():
     id_registro=request.json["id_registro"]
     monto=request.json["monto"]
     descripcion=request.json["descripcion"] or None
-    nuevo_ingreso=IngresoModel(id=0,monto=monto,descripcion=descripcion,id_registro=id_registro)
+    categoria=request.json["id_categoria"]
+    nuevo_ingreso=IngresoModel(nro=0,monto=monto,descripcion=descripcion,id_registro=id_registro,id_categoria=categoria)
     db.session.add(nuevo_ingreso)
     db.session.commit()
-    return ingreso_schema.jsonify(nuevo_ingreso)
+    return {'message':'Ingreso Añadido Correctamente'}
 
-@ingreso_router.route("/ingreso",methods=["GET"])
-def get_all_ingresos_from_a_usuario():
-    id_registro=request.json["id_registro"]
-    ingresos=IngresoModel.query.filter_by(id_registro=id_registro).all()
+@ingreso_router.route("/ingreso/<id_registro>",methods=["GET"])
+def get_all_ingresos_from_a_usuario(id_registro):
+    ingresos=IngresoModel.query.filter_by(id_registro=id_registro).order_by(IngresoModel.fecha.desc()).all()
     results=ingresos_schema.dump(ingresos)
     return jsonify(results)
 
-@ingreso_router.route("/ingreso/<id>",methods=["GET"])
-def get_ingreso(id):
-    ingreso=IngresoModel.query.get(id)
+
+@ingreso_router.route("/ingreso/<nro>",methods=["GET"])
+def get_ingreso(nro):
+    ingreso=IngresoModel.query.get(nro)
     return ingreso_schema.jsonify(ingreso)
 
-@ingreso_router.route("/ingreso/<id>",methods=["PUT"])
-def update_ingreso(id):
-    ingreso=IngresoModel.query.get(id)
+@ingreso_router.route("/ingreso/<nro>",methods=["PUT"])
+def update_ingreso(nro):
+    ingreso=IngresoModel.query.get(nro)
     ingreso.monto=request.json["monto"]
     ingreso.descripcion=request.json["descripcion"]
     ingreso.fecha=datetime.now()
     db.session.commit()
     return ingreso_schema.jsonify(ingreso)
 
-@ingreso_router.route("/ingreso/<id>",methods=["DELETE"])
-def delete_ingreso(id):
-    ingreso=IngresoModel.query.get(id)
+@ingreso_router.route("/ingreso/<nro>",methods=["DELETE"])
+def delete_ingreso(nro):
+    ingreso=IngresoModel.query.get(nro)
     db.session.delete(ingreso)
     db.session.commit()
     return ingreso_schema.jsonify(ingreso)

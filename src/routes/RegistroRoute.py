@@ -12,12 +12,11 @@ def create_registro():
     registro_a_crear=RegistroModel(id=0,email_usuario=email_usuario)
     db.session.add(registro_a_crear)
     db.session.commit()
-    return registro_schema.jsonify(registro_a_crear)
+    return {"message":"Registro creado con exito"}
 
 @registros_router.route("/registro/<email>",methods=["GET"])
 def get_registros(email):
-    email=request.json["email"]
-    registro=RegistroModel.query.filter_by(email_user=email).all()
+    registro=RegistroModel.query.filter_by(email_usuario=email).all()
     results=registros_schema.dump(registro)
     return jsonify(results)
 
