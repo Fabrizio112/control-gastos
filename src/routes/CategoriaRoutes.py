@@ -25,7 +25,7 @@ def add_categoria():
 
 @categoria_router.route("/category",methods=["GET"])
 def get_all_categories():
-    categorias=CategoriaModel.query.all()
+    categorias=CategoriaModel.query.order_by(CategoriaModel.id).all()
     results=categorias_schema.dump(categorias)
     return jsonify(results)
 
