@@ -12,7 +12,7 @@ def add_egreso():
     monto=request.json["monto"]
     descripcion=request.json["descripcion"] or None
     categoria=request.json["id_categoria"]
-    nuevo_egreso=EgresoModel(nro=0,monto=monto,descripcion=descripcion,id_registro=id_registro,id_categoria=categoria)
+    nuevo_egreso=EgresoModel(nro=0,monto=monto,descripcion=descripcion,fecha=datetime.now(),id_registro=id_registro,id_categoria=categoria)
     db.session.add(nuevo_egreso)
     db.session.commit()
     return {'message':"Egreso Añadido Con Exito "}

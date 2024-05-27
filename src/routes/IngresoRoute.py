@@ -12,7 +12,7 @@ def add_ingreso():
     monto=request.json["monto"]
     descripcion=request.json["descripcion"] or None
     categoria=request.json["id_categoria"]
-    nuevo_ingreso=IngresoModel(nro=0,monto=monto,descripcion=descripcion,id_registro=id_registro,id_categoria=categoria)
+    nuevo_ingreso=IngresoModel(nro=0,monto=monto,descripcion=descripcion,fecha=datetime.now(),id_registro=id_registro,id_categoria=categoria)
     db.session.add(nuevo_ingreso)
     db.session.commit()
     return {'message':'Ingreso Añadido Correctamente'}
